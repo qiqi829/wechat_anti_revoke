@@ -57,7 +57,12 @@ wchar_t* SafeGetObjectXmlMember(size_t object)
         __try
         {
             auto xml = *(wchar_t**)(object + memberOffset);
-            if (_wcsnicmp(xml, xmlHeader, wcslen(xmlHeader)) == 0)
+            if (xml[0] != L'<' || xml[1] != L's')
+            {
+                continue;
+            }
+
+            if (_wcsnicmp(xml, xmlHeader, wcslen(xmlHeader)) == 0)  // cannot try catch
             {
                 return xml;
             }
