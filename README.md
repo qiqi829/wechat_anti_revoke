@@ -17,7 +17,6 @@ vs2019，release，x64，生成d3d11.dll
 
 ## 原理：
 
-未patch微信模块。
-dll劫持注入拦截系统api，修改撤回消息xml数据包
+dll劫持注入，修改撤回消息xml数据包
 
 
