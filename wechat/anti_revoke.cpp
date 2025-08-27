@@ -30,10 +30,10 @@ size_t MyProcessNewXMLMsg(size_t a1, size_t a2)
         size_t v2 = *(size_t*)(v1 + 0x8);
         char* xml = *(char**)v2;
 
-        //OutputDebugStringA(xml);
+        OutputDebugStringA(xml);
 
         const char* revokeHeader = R"(<sysmsg type="revokemsg">)";
-        if(memcmp(xml, revokeHeader, strlen(revokeHeader)) == 0)
+        if(strstr(xml, revokeHeader) != 0)
         {
             auto msgidBegin = strstr(xml, "<newmsgid>") + strlen("<newmsgid>");
             auto msgidEnd = strstr(xml, "</newmsgid>");
